@@ -81,7 +81,7 @@ public class MathUtil {
 		return gcd(b, a % b);
 	}
 
-	public static BigInteger RaiseToPowerInPrecision(int i, long power, int precision) {
+	public static BigInteger raiseToPowerInPrecision(int i, long power, int precision) {
 		BigInteger number = BigInteger.valueOf(i);
 		BigInteger product = BigInteger.valueOf(1l); 
 		for(long l = 0; l < power; l++) {

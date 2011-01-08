@@ -18,47 +18,30 @@
  * limitations under the License.
  *
  */
-package org.myjerry.maer.page2;
+package org.myjerry.maer.page1;
 
 import java.math.BigInteger;
 
 import org.myjerry.maer.util.MathUtil;
 
 /**
- * Problem 97 on Project Euler, http://projecteuler.net/index.php?section=problems&id=97
+ * Problem 1 on Project Euler, http://projecteuler.net/index.php?section=problems&id=1
  *
  * @author Sandeep Gupta
- * @since Jan 7, 2011
+ * @since Jan 8, 2011
  */
-public class Problem97 {
-	
-	private static final long power = 7830457l;
-	
-	private static final int multiply = 28433;
+public class Problem48 {
 	
 	private static final int precision = 10;
 	
-	/**
-	 * 
-	 * @param args
-	 */
 	public static void main(String[] args) {
-		BigInteger lastTen = MathUtil.raiseToPowerInPrecision(2, power, precision);
-		BigInteger multiplied = Multiply(lastTen, multiply);
-		BigInteger add = multiplied.add(BigInteger.valueOf(1l));
-		
-		System.out.println("Last ten digits: " + MathUtil.trimToPrecision(add, precision));
-	}
+		BigInteger sum = BigInteger.valueOf(0l);
+		for(int i = 1; i <= 1000; i++) {
+			BigInteger powered = MathUtil.raiseToPowerInPrecision(i, i, precision);
+			sum = sum.add(powered);
+		}
 
-	/**
-	 * @param lastTen
-	 * @param multiply2
-	 * @return
-	 */
-	private static BigInteger Multiply(BigInteger lastTen, int multiply) {
-		BigInteger x = lastTen.multiply(BigInteger.valueOf(multiply));
-		return MathUtil.trimToPrecision(x, precision);
+		System.out.println("Last 10 digits are: " + MathUtil.trimToPrecision(sum, precision));
 	}
-
 
 }
