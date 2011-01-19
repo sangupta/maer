@@ -20,58 +20,52 @@
  */
 package org.myjerry.maer.page1;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.myjerry.maer.util.MathUtil;
 
 /**
- * Problem 21 on Project Euler, http://projecteuler.net/index.php?section=problems&id=21
- * 
+ * Problem 12 on Project Euler, http://projecteuler.net/index.php?section=problems&id=12
+ *
  * @author Sandeep Gupta
- * @since Jan 6, 2011
+ * @since Jan 9, 2011
  */
-public class Problem21 {
+public class Problem12 {
 	
-	private static final int eulerLimit = 10000;
-
+	private static final int eulerLimit = 500;
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		boolean[] amicable = new boolean[eulerLimit];
-		long next;
-		long sum = 0;
-		
-		for(int i = 1; i < eulerLimit; i++) {
-			if(!amicable[i]) {
-				// test this number
-				next = findNext(i);
-				if(next > 0) {
-					if(next < eulerLimit) {
-						int nextIndex = (int) next;
-						amicable[nextIndex] = true;
-					}
-					sum += i + next;
+		int n = 2;
+		do {
+			long number = MathUtil.sumFirstN(n);
+
+			List<Long> divisors = MathUtil.primeFactors(number);
+			Map<Long, Integer> powers = new HashMap<Long, Integer>();
+			for(long num : divisors) {
+				if(powers.containsKey(num)) {
+					powers.put(num, powers.get(num) + 1);
+				} else {
+					powers.put(num, 1);
 				}
 			}
-		}
-		
-		System.out.println("Sum = " + sum);
-	}
-
-	/**
-	 * Find the next amicable number.
-	 * 
-	 * @param number
-	 * @return
-	 */
-	private static long findNext(int number) {
-		long divSum = MathUtil.sumOfDivisors(number);
-		long otherSum = MathUtil.sumOfDivisors(divSum);
-		
-		if(otherSum == number && number != divSum) {
-			return divSum;
-		}
-		
-		return 0;
+			
+			int factors = 1;
+			for(Integer power : powers.values()) {
+				factors *= (power + 1);
+			}
+			
+			if(factors > eulerLimit) {
+				System.out.println("For term " + n + " with value " + number + " has total number of divisors: " + factors);
+				break;
+			}
+			
+			n++;
+		} while(true);
 	}
 
 }

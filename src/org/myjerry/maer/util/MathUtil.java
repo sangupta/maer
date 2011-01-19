@@ -21,6 +21,8 @@
 package org.myjerry.maer.util;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -60,7 +62,7 @@ public class MathUtil {
 		}
 		
 		long num = (long) Math.sqrt(n);
-		for(int i = 3; i < num; i += 2) {
+		for(int i = 3; i <= num; i += 2) {
 			if(n % i == 0) {
 				return false;
 			}
@@ -93,6 +95,16 @@ public class MathUtil {
 		return product;
 	}
 	
+	public static BigInteger raiseToPower(int i, long power) {
+		BigInteger number = BigInteger.valueOf(i);
+		BigInteger product = BigInteger.valueOf(1l); 
+		for(long l = 0; l < power; l++) {
+			product = product.multiply(number);
+		}
+		
+		return product;
+	}
+
 	public static BigInteger trimToPrecision(BigInteger number, int precision) {
 		String n = number.toString();
 		if(n.length() > precision) {
@@ -101,4 +113,82 @@ public class MathUtil {
 		return new BigInteger(n);
 	}
 
+	/**
+	 * Returns the sum of all divisors of the given <code>number</code>.
+	 * 
+	 * @param divSum
+	 * @return
+	 */
+	public static long sumOfDivisors(long number) {
+		long upperIndex = 1 + (long)(Math.sqrt(number));
+		
+		// the initial value is 1 because 1 is always a factor of every number
+		long sum = 1;
+		
+		for(int index = 2; index <= upperIndex; index++) {
+			if(number % index == 0) {
+				sum += index + (number/index);
+			}
+		}
+
+		return sum;
+	}
+	
+	public static List<Long> divisors(long number) {
+		List<Long> divisors = new ArrayList<Long>();
+		
+		// the initial value is 1 because 1 is always a factor of every number
+		divisors.add(1l);
+		
+		for(int index = 2; index <= (number / 2); index++) {
+			if(number % index == 0) {
+				divisors.add(new Long(index));
+			}
+		}
+
+		return divisors;
+	}
+	
+	public static BigInteger factorial(int number) {
+		BigInteger product = BigInteger.valueOf(1l);
+		for(int index = 2; index <= number; index++) {
+			product = product.multiply(BigInteger.valueOf(index));
+		}
+		
+		return product;
+	}
+	
+	public static List<Long> primeFactors(long n) {
+		List<Long> factors = new ArrayList<Long>();
+		for (int i = 2; i <= n / i; i++) {
+			while (n % i == 0) {
+				factors.add((long)i);
+				n /= i;
+			}
+		}
+		if (n > 1) {
+			factors.add(n);
+		}
+		return factors;
+	}
+
+	public static double[] solveQuadratic(long a, long b, long c) {
+		double[] values = new double[2];
+		
+		double arg = (b * b) - (4 * a * c);
+		if(arg < 0) {
+			return null;
+		}
+		
+		double quad = Math.sqrt(arg);
+		double a2 = 2 * a;
+		double bn = 0 - b;
+		double x1 = (bn + quad) / a2;
+		double x2 = (bn + quad) / a2;
+		
+		values[0] = x1;
+		values[1] = x2;
+		
+		return values;
+	}
 }
