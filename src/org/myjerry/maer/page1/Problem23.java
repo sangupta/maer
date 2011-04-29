@@ -20,9 +20,9 @@
  */
 package org.myjerry.maer.page1;
 
-import java.math.BigInteger;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import org.myjerry.maer.util.MathUtil;
 
@@ -34,20 +34,45 @@ import org.myjerry.maer.util.MathUtil;
  * @since Jan 18, 2011
  */
 public class Problem23 {
+	
+	private static final int eulerLimit = 20162;
 
 	public static void main(String[] args) {
-		Set<BigInteger> numbers = new HashSet<BigInteger>();
-
-		int count = 0;
-		for (int a = 2; a < 101; a++) {
-			for (int b = 2; b < 101; b++) {
-				BigInteger num = MathUtil.raiseToPower(a, b);
-				count++;
-				numbers.add(num);
+		// make a list of all abundants
+		List<Integer> abundants = new ArrayList<Integer>();
+		
+		for(int number = 1; number < eulerLimit; number++) {
+			long sumOfDivisors = MathUtil.sumOfDivisors(number); 
+			if(sumOfDivisors > number) {
+				abundants.add(number);
 			}
 		}
-
-		System.out.println("Distinct numbers: " + numbers.size() + " in total " + count + " numbers.");
+		
+		// find all those which are a sum of two abundants
+		int[] array = new int[eulerLimit];
+		int len = array.length;
+		for (int i = 0; i < len; i++) {
+			array[i] = i + 1;
+		}
+		
+		Iterator<Integer> it = abundants.iterator();
+		while (it.hasNext()) {
+			int one = it.next();
+			for (int j = 0; j < abundants.size(); j++) {
+				int sum = one + abundants.get(j);
+				if (sum <= len) {
+					array[sum - 1] = 0;
+				}
+			}
+			it.remove(); // remove it as checked against ALL numbers
+		}
+		int sum = 0;
+		len = array.length;
+		for (int i = 0; i < len; i++) {
+			sum += array[i];
+		}		     
+		     
+		System.out.println("Sum: " + sum);
 	}
-
+	
 }
