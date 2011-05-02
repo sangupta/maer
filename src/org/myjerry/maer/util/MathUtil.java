@@ -191,4 +191,24 @@ public class MathUtil {
 		
 		return values;
 	}
+	
+	public static boolean isPentagonal(int number) {
+		double x = 1 + 24 * number;
+		x = Math.sqrt(x);
+		x += 1;
+		x /= 6;
+		
+		long y = (long) x;
+		x -= y;
+		
+		if(x == 0) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public static int getPentagonalForIndex(int n) {
+		return (n * (3 * n - 1)) / 2;
+	}
 }
