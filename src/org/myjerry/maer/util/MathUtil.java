@@ -22,6 +22,7 @@ package org.myjerry.maer.util;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -210,5 +211,22 @@ public class MathUtil {
 	
 	public static int getPentagonalForIndex(int n) {
 		return (n * (3 * n - 1)) / 2;
+	}
+
+	/**
+	 * @param n
+	 * @return
+	 */
+	public static boolean isPandigital(String num) {
+		char[] digits = num.toCharArray();
+		Arrays.sort(digits);
+		for(int index = 0; index < digits.length; index++) {
+			int d = digits[index] - '0';
+			if(d != (index + 1)) {
+				return false;
+			}
+		}
+		
+		return true;
 	}
 }
