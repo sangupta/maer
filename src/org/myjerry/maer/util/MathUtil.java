@@ -229,4 +229,26 @@ public class MathUtil {
 		
 		return true;
 	}
+
+	/**
+	 * @param ab
+	 * @return
+	 */
+	public static long sumOfDigits(BigInteger ab) {
+		String number = ab.toString();
+		return sumOfDigits(number);
+	}
+
+	/**
+	 * @param number
+	 * @return
+	 */
+	private static long sumOfDigits(String number) {
+		long sum = 0;
+		for(char c : number.toCharArray()) {
+			sum += c - '0';
+		}
+		
+		return sum;
+	}
 }
