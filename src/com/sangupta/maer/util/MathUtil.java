@@ -260,4 +260,43 @@ public class MathUtil {
 		String numString = String.valueOf(number);
 		return isPandigital(numString);
 	}
+
+	/**
+	 * @param a
+	 * @param b
+	 * @param c
+	 * @return
+	 */
+	public static boolean arePrime(long... array) {
+		if(array == null || array.length == 0) {
+			throw new IllegalArgumentException("No number specified to be tested for primality.");
+		}
+		
+		for(int index = 0; index < array.length; index++) {
+			long number = array[index];
+			if(!isPrime(number)) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
+
+	/**
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	public static boolean isPermutation(int a, int b) {
+		String num1 = String.valueOf(a);
+		String num2 = String.valueOf(b);
+		for(int i = 0; i < num1.length(); i++) {
+			char c = num1.charAt(i);
+			if(num2.indexOf(c) == -1) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
 }
