@@ -251,4 +251,13 @@ public class MathUtil {
 		
 		return sum;
 	}
+
+	/**
+	 * @param i
+	 * @return
+	 */
+	public static boolean isPandigital(long number) {
+		String numString = String.valueOf(number);
+		return isPandigital(numString);
+	}
 }
