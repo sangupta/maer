@@ -1,8 +1,8 @@
 /**
  *
  * maer - Solutions to problems of Project Euler
- * Copyright (C) 2011, myJerry Developers
- * http://www.myjerry.org/maer
+ * Copyright (C) 2011, Sandeep Gupta
+ * http://www.sangupta.com/projects/maer
  *
  * The file is licensed under the the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
