@@ -299,4 +299,12 @@ public class MathUtil {
 		
 		return true;
 	}
+
+	/**
+	 * @param diff
+	 * @return
+	 */
+	public static boolean isEven(int number) {
+		return number % 2 == 0;
+	}
 }
