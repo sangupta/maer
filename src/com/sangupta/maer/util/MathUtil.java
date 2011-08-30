@@ -301,10 +301,22 @@ public class MathUtil {
 	}
 
 	/**
+	 * Tests whether the given number is even or not, uses bit arithmetic.
+	 * 
 	 * @param diff
 	 * @return
 	 */
-	public static boolean isEven(int number) {
-		return number % 2 == 0;
+	public static boolean isEven(long number) {
+		return (number & 1) == 0;
+	}
+	
+	/**
+	 * Tests whether the given number is odd or not, uses bit arithmetic.
+	 * 
+	 * @param number
+	 * @return
+	 */
+	public static boolean isOdd(long number) {
+		return (number & 1) == 1;
 	}
 }
