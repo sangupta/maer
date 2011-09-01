@@ -20,6 +20,8 @@
  */
 package com.sangupta.maer.util;
 
+import java.util.Arrays;
+
 /**
  * An implementation of prime seive.
  * 
@@ -41,9 +43,7 @@ public class PrimeSeive {
 		
 		// initially assume all integers are prime
 		isPrime = new boolean[maxNumber + 1];
-		for (int i = 2; i <= maxNumber; i++) {
-			isPrime[i] = true;
-		}
+		Arrays.fill(isPrime, true);
 
 		// mark non-primes <= N using Sieve of Eratosthenes
 		for (int i = 2; i * i <= maxNumber; i++) {
