@@ -20,11 +20,9 @@
  */
 package com.sangupta.maer.page2;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.List;
+
+import com.sangupta.maer.util.FileUtils;
 
 /**
  * Problem 79 on Project Euler, http://projecteuler.net/index.php?section=problems&id=79
@@ -38,18 +36,8 @@ public class Problem79 {
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
-		String path = "c:/keylog.txt";
+		List<String> passcodes = FileUtils.readLines(79);
 		
-		List<String> passcodes = new ArrayList<String>();
-		
-		// read the attempts
-		File file = new File(path);
-		BufferedReader reader = new BufferedReader(new FileReader(file));
-		String line;
-		while((line = reader.readLine()) != null) {
-			passcodes.add(line);
-		}
-
 		// analyze the pass-codes and build the unique password
 		String[] codes = passcodes.toArray(new String[] { });
 		

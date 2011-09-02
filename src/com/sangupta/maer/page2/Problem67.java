@@ -20,9 +20,9 @@
  */
 package com.sangupta.maer.page2;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.util.List;
+
+import com.sangupta.maer.util.FileUtils;
 
 /**
  * Problem 1 on Project Euler, http://projecteuler.net/index.php?section=problems&id=1
@@ -38,14 +38,10 @@ public class Problem67 {
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
-		String path = "c:/triangle.txt";
+		List<String> lines = FileUtils.readLines(67);
 		
-		// build the matrix
-		File file = new File(path);
-		BufferedReader reader = new BufferedReader(new FileReader(file));
-		String line;
 		int lineCount = 0;
-		while((line = reader.readLine()) != null) {
+		for(String line : lines) {
 			String tokens[] = line.split(" ");
 			if(tokens != null) {
 				int[] row = new int[tokens.length];

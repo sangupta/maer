@@ -20,10 +20,9 @@
  */
 package com.sangupta.maer.page2;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.util.List;
 
+import com.sangupta.maer.util.FileUtils;
 import com.sangupta.maer.util.RomanNumberUtil;
 
 /**
@@ -38,16 +37,10 @@ public class Problem89 {
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
-		String path = "c:/roman.txt";
-		
-		// read all sudoku's
-		File file = new File(path);
-		BufferedReader reader = new BufferedReader(new FileReader(file));
-		String line;
-		
+		List<String> lines = FileUtils.readLines(89);
 		int original = 0, reduced = 0;
 		
-		while((line = reader.readLine()) != null) {
+		for(String line : lines) {
 			original += line.length();
 			reduced += RomanNumberUtil.reduce(line).length();
 		}

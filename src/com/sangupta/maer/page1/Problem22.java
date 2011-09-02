@@ -20,12 +20,11 @@
  */
 package com.sangupta.maer.page1;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import com.sangupta.maer.util.FileUtils;
 
 /**
  * Problem 22 on Project Euler, http://projecteuler.net/index.php?section=problems&id=22
@@ -41,13 +40,9 @@ public class Problem22 {
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
-		String path = "C:/names.txt";
+		List<String> lines = FileUtils.readLines(22);
 		
-		// read all names in an array first
-		File file = new File(path);
-		BufferedReader reader = new BufferedReader(new FileReader(file));
-		String line;
-		while((line = reader.readLine()) != null) {
+		for(String line : lines) {
 			String tokens[] = line.split(",");
 			if(tokens != null) {
 				for(String token : tokens) {

@@ -20,14 +20,13 @@
  */
 package com.sangupta.maer.page1;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import com.sangupta.maer.util.FileUtils;
 
 /**
  * Problem 42 on Project Euler, http://projecteuler.net/index.php?section=problems&id=42
@@ -48,13 +47,9 @@ public class Problem42 {
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
-		String path = "C:/words.txt";
-		
-		// read all names in an array first
-		File file = new File(path);
-		BufferedReader reader = new BufferedReader(new FileReader(file));
-		String line;
-		while((line = reader.readLine()) != null) {
+		List<String> lines = FileUtils.readLines(42);
+
+		for(String line : lines) {
 			String tokens[] = line.split(",");
 			if(tokens != null) {
 				for(String token : tokens) {

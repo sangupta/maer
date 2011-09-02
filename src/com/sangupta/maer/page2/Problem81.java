@@ -37,6 +37,7 @@ public class Problem81 {
 	 */
 	public static void main(String[] args) {
 		matrix = FileUtils.readFileAsIntMatrix(81, 80, 80);
+		
 		System.out.println("Min Sum: " + getMinimumSum(matrix));
 	}
 	
