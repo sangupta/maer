@@ -319,4 +319,42 @@ public class MathUtil {
 	public static boolean isOdd(long number) {
 		return (number & 1) == 1;
 	}
+	
+	public static boolean isBouncy(long number) {
+		return isBouncy(String.valueOf(number));
+	}
+	
+	public static boolean isBouncy(BigInteger number) {
+		if(number == null) {
+			throw new IllegalArgumentException("Number cannot be null.");
+		}
+		
+		return isBouncy(number.toString());
+	}
+	
+	/**
+	 * @param number
+	 * @return
+	 */
+	public static boolean isBouncy(String number) {
+		char[] chars = number.toCharArray();
+		int max = chars.length - 1;
+		
+		boolean increasing = false, decreasing = false;
+		for(int index = 0; index < max; index++) {
+			if(!increasing && chars[index + 1] > chars[index]) {
+				increasing = true;
+			}
+			
+			if(!decreasing && chars[index + 1] < chars[index]) {
+				decreasing = true;
+			}
+			
+			if(increasing && decreasing) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 }

@@ -20,8 +20,10 @@
  */
 package com.sangupta.maer.page3;
 
+import com.sangupta.maer.util.MathUtil;
+
 /**
- * Problem 1 on Project Euler, http://projecteuler.net/index.php?section=problems&id=1
+ * Problem 112 on Project Euler, http://projecteuler.net/index.php?section=problems&id=112
  *
  * @author <a href="http://www.sangupta.com">Sandeep Gupta</a>
  * @since 01-Sep-2011
@@ -38,7 +40,7 @@ public class Problem112 {
 		double ratio = 0.9;
 		do {
 			number++;
-			if(isBouncy(number)) {
+			if(MathUtil.isBouncy(number)) {
 				bouncy++;
 			}
 			
@@ -46,32 +48,6 @@ public class Problem112 {
 		} while(ratio < 0.99);
 		
 		System.out.println("Number to break even at 0.99 ratio: " + number);
-	}
-
-	/**
-	 * @param n
-	 * @return
-	 */
-	private static boolean isBouncy(int n) {
-		char[] chars = String.valueOf(n).toCharArray();
-		int max = chars.length - 1;
-		
-		boolean increasing = false, decreasing = false;
-		for(int index = 0; index < max; index++) {
-			if(!increasing && chars[index + 1] > chars[index]) {
-				increasing = true;
-			}
-			
-			if(!decreasing && chars[index + 1] < chars[index]) {
-				decreasing = true;
-			}
-			
-			if(increasing && decreasing) {
-				return true;
-			}
-		}
-		
-		return false;
 	}
 
 }
