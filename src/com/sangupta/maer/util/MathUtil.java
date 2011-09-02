@@ -120,18 +120,59 @@ public class MathUtil {
 	 * @param divSum
 	 * @return
 	 */
-	public static long sumOfDivisors(long number) {
-		long upperIndex = 1 + (long)(Math.sqrt(number));
+	public static long sumOfDivisors(long num) {
+		long sum = 0;
+		long root = (long) Math.sqrt((double) num);
 		
-		// the initial value is 1 because 1 is always a factor of every number
-		long sum = 1;
-		
-		for(int index = 2; index <= upperIndex; index++) {
-			if(number % index == 0) {
-				sum += index + (number/index);
-			}
+		if (root * root == num) {
+			// case that n is a perfect square
+			sum += root;
+			root -= 1;
 		}
 
+		if (isOdd(num)) {
+			for (int i = 1; i <= root; i += 2) {
+				if (num % i == 0)
+					sum += i + num / i;
+			}
+		} else {
+			// number is even
+			for (int i = 1; i <= root; i += 1) {
+				if (num % i == 0)
+					sum += i + num / i;
+			}
+		}
+		
+		return sum;
+	}
+	
+	public static long sumOfProperDivisors(long num) {
+		if(num == 1) {
+			return 0;
+		}
+		
+		long sum = 1; // as 1 is a divisor and we are considering proper divisors
+		long root = (long) Math.sqrt((double) num);
+		
+		if (root * root == num) {
+			// case that n is a perfect square
+			sum += root;
+			root -= 1;
+		}
+
+		if (isOdd(num)) {
+			for (int i = 2; i <= root; i += 2) {
+				if (num % i == 0)
+					sum += i + num / i;
+			}
+		} else {
+			// number is even
+			for (int i = 2; i <= root; i += 1) {
+				if (num % i == 0)
+					sum += i + num / i;
+			}
+		}
+		
 		return sum;
 	}
 	
