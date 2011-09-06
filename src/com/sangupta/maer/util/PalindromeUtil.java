@@ -21,6 +21,7 @@
 package com.sangupta.maer.util;
 
 import java.math.BigInteger;
+import java.util.List;
 
 /**
  * 
@@ -75,5 +76,43 @@ public class PalindromeUtil {
 		String rev = new StringBuilder(num).reverse().toString();
 		BigInteger revNum = new BigInteger(rev);
 		return revNum;
+	}
+	
+	public static int getPalindromes(int maximum) {
+		int result;
+		final int[] A050250 = { 0, 9, 18, 108, 198, 1098, 1998, 10998, 19998, 109998, 199998, 1099998,
+		           1999998, 10999998, 19999998, 109999998, 199999998, 1099999998, 1999999998 };
+		
+		final int[] pow10 = { 1,10,100,1000,10000,100000, 1000000,10000000,10000000,1000000000 };
+		
+		int n, m, k, j;
+		int[] d = new int[19];
+		
+		m = 0; n = maximum;
+		while(n > 0) {
+			d[m] = n % 10;
+			n = n / 10;
+			m++;
+		}
+		
+		n = m - 1;
+		result = A050250[n];
+		
+		m = n; j = 0; k = n / 2;
+		d[n] = d[n] - 1;
+		
+		while((m -j) >= 2) {
+			result = result + d[m] * pow10[k];
+			m--;
+			j++;
+			k--;
+		}
+		
+		result += d[m];
+		if(d[j] > d[m]) {
+			result++;
+		}
+		
+		return result;
 	}
 }

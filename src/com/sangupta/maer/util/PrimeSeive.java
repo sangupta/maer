@@ -20,7 +20,9 @@
  */
 package com.sangupta.maer.util;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * An implementation of prime seive.
@@ -56,6 +58,18 @@ public class PrimeSeive {
 				}
 			}
 		}
+	}
+	
+	public List<Integer> primes() {
+		List<Integer> primes = new ArrayList<Integer>();
+		int length = isPrime.length;
+        for (int i = 2; i < length; i++) {
+            if (isPrime[i]) {
+            	primes.add(i);
+            }
+        }
+		
+        return primes;
 	}
 	
 	public int count() {
