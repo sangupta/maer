@@ -35,10 +35,6 @@ public class Problem348 {
 	private static long sum = 0;
 
 	/**
-	 * Found 5229225
-	 * Found 37088073
-	 * Found 56200265
-	 * Found 108909801
 	 * @param args
 	 */
 	public static void main(String[] args) {
