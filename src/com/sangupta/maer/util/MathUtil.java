@@ -284,13 +284,28 @@ public class MathUtil {
 	 * @param number
 	 * @return
 	 */
-	private static long sumOfDigits(String number) {
+	public static long sumOfDigits(String number) {
 		long sum = 0;
 		for(char c : number.toCharArray()) {
 			sum += c - '0';
 		}
 		
 		return sum;
+	}
+	
+	/**
+	 * 
+	 * @param number
+	 * @return
+	 */
+	public static int sumOfDigits(long number) {
+		int sum = 0;
+
+		for (; number >= 10; number /= 10) {
+			sum += number % 10;
+		}
+
+		return sum + (int) number;
 	}
 
 	/**
