@@ -1,7 +1,14 @@
 maer - Solutions to problems of Project Euler
 =============================================
 
-Java based solutions to Project Euler problems, http://projecteuler.net, a series of challenging mathematical/computer programming problems that require more than just mathematical insight to solve.
+This is a repository to my Java based solutions to Project Euler problems, http://projecteuler.net, a series of challenging mathematical/computer programming problems that require more than just mathematical insight to solve.
+
+Spolier Alert
+-------------
+The solutions are posted here for my reference only. I suggest that you do not use the code below for solving the challenge. It would however be interesting to compare and know more, once you have solved the challenge yourself. Best of luck!
+
+License
+-------
 
 maer - Solutions to problems of Project Euler
 Copyright (C) 2011, Sandeep Gupta
