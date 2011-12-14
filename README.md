@@ -10,8 +10,9 @@ The solutions are posted here for my reference only. I suggest that you do not u
 License
 -------
 
-    maer - Solutions to problems of Project Euler
     Copyright (C) 2011, Sandeep Gupta
+    
+    For more details on the project refer to link,
     http://www.sangupta.com/projects/maer
     
     The entire source is licensed under the the Apache License, Version 2.0
